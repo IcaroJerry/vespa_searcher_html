@@ -1,4 +1,4 @@
-package com.potelo.prelude.searcher;
+package com.escavador.prelude.searcher;
 
 import com.yahoo.component.ComponentId;
 import com.yahoo.component.chain.Chain;
@@ -20,12 +20,12 @@ class BypassTagSearcherTest {
     void test() {
 
         Query query = new Query("/search/?yql=" +
-                                encode("SELECT * FROM SOURCES teste WHERE userQuery();",
-                                StandardCharsets.UTF_8) + "&query=query_string");
+                                encode("SELECT * FROM SOURCES * WHERE userQuery();",
+                                StandardCharsets.UTF_8) + "&query=a");
 
         QrSearchersConfig.Builder builder = new QrSearchersConfig.Builder();
 
-        BypassTagSearcher searcher = new BypassTagSearcher(new ComponentId("test"), builder.build());
+        BypassTagSearcher searcher = new BypassTagSearcher(new ComponentId("a"), builder.build());
 
         Chain<Searcher> myChain = new Chain<>(searcher);  // added to chain in this order
         Execution.Context context = Execution.Context.createContextStub();
